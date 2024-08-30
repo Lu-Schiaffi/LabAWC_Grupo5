@@ -4,3 +4,12 @@
   font-family: "Anek Devanagar", sans-serif;
 }
 
+img {
+  flex: content;
+  width: fit-content;
+  height: auto;
+}
+
+.footer {
+  position: relative;
+}
