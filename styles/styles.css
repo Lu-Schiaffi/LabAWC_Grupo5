@@ -3,13 +3,31 @@
 * {
   font-family: "Anek Devanagar", sans-serif;
 }
+main {
+  margin-bottom: 48px;
+}
+
+.indexMain {
+  line-height: 0.5;
+}
 
 img {
   flex: content;
   width: fit-content;
   height: auto;
+  border-radius: 10px;
 }
 
-.footer {
-  position: relative;
+footer {
+  position: fixed;
+  margin: 0;
+  padding: 3px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.modal-title,
+.card-title {
+  font-weight: 700;
 }

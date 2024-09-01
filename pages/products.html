@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./resources/logo2.jpg" type="image/jpg" />
     <title>E-commerce - Istea - Grupo 5 - Scaramella, De Bonis, Schiaffi</title>
     <link rel="stylesheet" href="../styles/styles.css" />
 
@@ -34,20 +35,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <!-- <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >Inicio</a
-                >
-              </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="../pages/products.html">Productos</a>
+                <a class="nav-link active" href="../pages/products.html"
+                  >Productos</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="../pages/cart.html">Carrito</a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li> -->
             </ul>
           </div>
         </div>
@@ -56,17 +51,27 @@
 
     <!-- MAIN -->
     <main class="bg-dark text-white">
+      <!-- Cards -->
       <section class="container">
-        <div class="row row-cols-1 row-cols-md-5 g-4" id="card-template"></div>
+        <div class="row row-cols-2 row-cols-md-5 g-4" id="card-template"></div>
       </section>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="detailsModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      ></div>
     </main>
 
     <!-- Footer -->
     <footer class="bg-dark text-center text-white p-3">
-      <p>
+      <span>
         Laboratorio de Aplicaciones Web Cliente - Grupo 5. Scaramella, De Bonis,
         Schiaffi.
-      </p>
+      </span>
     </footer>
 
     <!-- SCRIPTS -->
