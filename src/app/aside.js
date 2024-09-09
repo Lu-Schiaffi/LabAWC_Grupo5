@@ -8,7 +8,7 @@ export function createAside(objLocalStorage) {
 
   objLocalStorage.map((product) => {
     let aside = `
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3 text-bg-dark border border-light-subtle" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="${product.image}" class="img-fluid rounded-start p-1" alt="${product.title}">
@@ -17,9 +17,9 @@ export function createAside(objLocalStorage) {
           <div class="card-body">
             <p class="card-title text-center">$${product.totalPrice}</p>
             <div class= "text-center" >
-              <button type="button" class = "btn btn-outline-dark" id="buttonLess-${product.id}">-</button>
+              <button type="button" class = "btn btn-outline-dark text-bg-secondary" id="buttonLess-${product.id}">-</button>
               <span class="card-text">${product.quantity}</span>
-              <button type="button" class = "btn btn-outline-dark" id="buttonAdd-${product.id}">+</button>
+              <button type="button" class = "btn btn-outline-dark text-bg-secondary" id="buttonAdd-${product.id}">+</button>
             </div>
           </div>
         </div>
@@ -47,5 +47,12 @@ export function createAside(objLocalStorage) {
 
     asideBody.innerHTML += aside;
   });
-  asideBody.innerHTML += `<div class="card-title text-center">Total compra: $${totalCompra}</div>`;
+  let asideFooter = `
+  
+    <div class="card-title text-center border border-success-subtle rounded mb-3">Total compra: $${totalCompra}</div>
+    <div class="card-title text-center text-bg-success border border-success-success rounded mb-3">
+      <a class="nav-link" href="../pages/cart.html">Finalizar compra</a>
+      </div>
+  `;
+  asideBody.innerHTML += asideFooter;
 }
