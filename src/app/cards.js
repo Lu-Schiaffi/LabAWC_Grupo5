@@ -13,13 +13,8 @@ export function createCard() {
         displayTitle = displayTitle.substring(0, 27);
         displayTitle += "...";
       }
-      // Description trimmed to 100 characters
-      // let displayDescription = product.description;
-      // if (displayDescription.length > 100) {
-      //   displayDescription = displayDescription.substring(0, 97);
-      //   displayDescription += "...";
-      // }
       product.quantity = 0;
+      product.totalPrice = 0;
 
       let card = `<div class="card ">
         <img src=${product.image} class="card-img-top p-1" alt="${product.title}">
@@ -31,6 +26,7 @@ export function createCard() {
         <button title ="Botón Agregar al carrito" type="button" class="btn btn-primary btn-sm mb-2" id="btnAddCart-${product.id}">Agregar al carrito</button>
       </div>`;
 
+      // Botón descripción
       setTimeout(() => {
         let btnDetails = document.querySelector(`#btnDetails-${product.id}`);
         btnDetails.onclick = () => {
@@ -38,6 +34,7 @@ export function createCard() {
         };
       }, 0);
 
+      // Botón agregar al carrito
       setTimeout(() => {
         let btnAddToCart = document.querySelector(`#btnAddCart-${product.id}`);
         btnAddToCart.onclick = () => {
