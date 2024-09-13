@@ -1,5 +1,6 @@
 import { createAside } from "./aside.js";
 import { toast } from "./toast.js";
+import { createCartCards } from "./createCartCards.js";
 
 export function addRemoveButton(objLocalStorage, product, type) {
   // guardo index del producto
@@ -10,6 +11,7 @@ export function addRemoveButton(objLocalStorage, product, type) {
   // sumar o restar
   if (type == "add") product.quantity += 1;
   else if (type == "remove") product.quantity -= 1;
+  else if (type == "delete") product.quantity = 0;
 
   // Actualizo info (si queda en cero, elimino el producto)
   if (product.quantity == 0) {
@@ -22,4 +24,5 @@ export function addRemoveButton(objLocalStorage, product, type) {
   }
   localStorage.setItem("CardProducts", JSON.stringify(objLocalStorage));
   createAside(objLocalStorage);
+  createCartCards(objLocalStorage);
 }

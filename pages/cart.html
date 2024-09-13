@@ -14,12 +14,15 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
   </head>
 
   <body>
     <!-- NavBar -->
-    <header class="p-3 mb-2 bg-dark text-white">
+    <header class="p-3 bg-dark text-white">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="../index.html">E-commerce</a>
@@ -37,20 +40,60 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="../pages/products.html">Productos</a>
+                <a class="nav-link active" href="../pages/products.html"
+                  >Productos</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="../pages/cart.html">Carrito</a>
+                <a class="nav-link" href="../pages/cart.html">Carrito</a>
               </li>
             </ul>
           </div>
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            <i class="bi bi-cart4"></i>
+          </button>
         </div>
       </nav>
     </header>
 
     <!-- MAIN -->
     <main class="bg-dark text-white">
-      <h1>Acá hay que linkear con lo que se vea de costado del carrito?</h1>
+      <!-- card container -->
+      <section class="container">
+        <div class="row">
+          <div class="col-12" id="cart-card-template"></div>
+        </div>
+      </section>
+
+      <!-- aside -->
+      <div
+        class="offcanvas offcanvas-end text-bg-dark"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
+          <button
+            type="button"
+            class="btn-close text-bg-light"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body" id="aside-body"></div>
+      </div>
+
+      <!-- toast -->
+      <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div class="toast-container top-0 end-0 p-3 position-fixed z-5"></div>
+      </div>
     </main>
 
     <!-- Footer -->
@@ -69,6 +112,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- JS -->
-    <script src="../src/index.js" type="module"></script>
+    <script src="../src/cart.js" type="module"></script>
   </body>
 </html>
