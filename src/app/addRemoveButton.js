@@ -22,6 +22,7 @@ export function addRemoveButton(objLocalStorage, product, type) {
     objLocalStorage[index] = product;
     toast("La cantidad se actualizó correctamente", "success");
   }
+
   localStorage.setItem("CardProducts", JSON.stringify(objLocalStorage));
   createAside(objLocalStorage);
   createCartCards(objLocalStorage);

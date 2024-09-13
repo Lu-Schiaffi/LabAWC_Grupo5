@@ -1,6 +1,7 @@
 import { addRemoveButton } from "./addRemoveButton.js";
 import { addToCart } from "./addToCart.js";
 import { createCartCards } from "./createCartCards.js";
+import { emptyCart } from "./emptyCart.js";
 
 export function createAside(objLocalStorage) {
   let totalCompra = 0;
@@ -69,11 +70,19 @@ export function createAside(objLocalStorage) {
   let finishBtn;
   if (totalCompra !== 0) {
     finishBtn = `
-    <div class="card-title text-center text-bg-success border border-success-success rounded mb-3">
+    <button type="button" class="card-title text-center text-bg-danger border border-success-success rounded mb-3" id="emptyCart"
+  >Eliminar todos los productos</button>
+
+    <button type="button" class="card-title text-center text-bg-success border border-success-success rounded mb-3">
       <a class="nav-link" href="../pages/cart.html">Finalizar compra</a>
-    </div>
+    </button>
     `;
   } else finishBtn = "";
-
+  setTimeout(() => {
+    let buttonEmpty = document.querySelector(`#emptyCart`);
+    buttonEmpty.onclick = () => {
+      emptyCart(objLocalStorage, "", "empty");
+    };
+  }, 0);
   asideBody.innerHTML += asideFooter + finishBtn;
 }
