@@ -1,10 +1,12 @@
 import { getProducts } from "./api.js";
-import { createCard } from "./app/cards.js";
+import { createCards } from "./app/cards.js";
 import { createAside } from "./app/aside.js";
 import { toast } from "./app/toast.js";
 import { createCartCards } from "./app/createCartCards.js";
+import { searcher } from "./app/searcher.js";
 
-createCard();
+createCards();
+searcher();
 
 // inicializar carrito
 

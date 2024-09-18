@@ -4,7 +4,7 @@ export function createCartCards(objLocalStorage) {
   let totalCompra = 0;
   // limpiar el container cada vez que se llama la función
   let cartBody = document.querySelector("#cart-card-template");
-  cartBody.innerHTML = "<br>";
+  cartBody.innerHTML = "";
 
   objLocalStorage.map((product) => {
     let cartCard = `
@@ -67,21 +67,41 @@ export function createCartCards(objLocalStorage) {
 
     cartBody.innerHTML += cartCard;
   });
-  let cartBodyFooter = `
 
-        <div class="card-title text-center border border-success-subtle rounded mb-3">Total compra: $${totalCompra}</div>
-        
-        <div class="row">
-          <div class="col-12">
-          <div class="row g-0">
-            <div class="col-md-10">
-            </div>
-            <div class="col-md-2">
-            <button type="button" class="container text-center text-bg-success border border-success-success rounded mb-3">Finalizar compra</button>
-            </div>
-
-            </div>
-
+  let cartBodyFooter = "";
+  if (objLocalStorage.length == 0) {
+    cartBodyFooter = `
+        <div class="card-title text-center border border-success-subtle rounded mb-3">El carrito está vacío</div>
+      <div class="row">
+      <div class="col-12">
+      <div class="row g-0">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+      <a class="nav-link active" href="../pages/products.html">
+        <button type="button" class="container text-center text-bg-success border border-success-success rounded mb-3">Comenzar a comprar</button>
+      </a>
+      </div>
+      
+      </div>   
       `;
+  } else {
+    cartBodyFooter = `
+    
+    <div class="card-title text-center border border-success-subtle rounded mb-3">Total compra: $${totalCompra}</div>
+    
+    <div class="row">
+    <div class="col-12">
+    <div class="row g-0">
+    <div class="col-md-10">
+    </div>
+    <div class="col-md-2">
+    <button type="button" class="container text-center text-bg-success border border-success-success rounded mb-3">Finalizar compra</button>
+    </div>
+    
+    </div>
+    
+    `;
+  }
   cartBody.innerHTML += cartBodyFooter;
 }

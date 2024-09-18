@@ -1,12 +1,14 @@
 import { getProducts } from "../api.js";
 import { createModal } from "./modal.js";
 import { addToCart } from "./addToCart.js";
+import { searcher } from "./searcher.js";
 
 let cardContainer = document.querySelector("#card-template");
 
-export function createCard() {
+export function createCards() {
   getProducts().then((data) => {
     data.map((product) => {
+      // createIndividualCard(product);
       // Title trimmed to 100 characters
       let displayTitle = product.title;
       if (displayTitle.length > 30) {
@@ -16,7 +18,8 @@ export function createCard() {
       product.quantity = 0;
       product.totalPrice = 0;
 
-      let card = `<div class="card ">
+      // Se agrega el id al div para luego modificar la class con el searches: collpase | collapse.show
+      let card = `<div class="card collapse.show" id="card-${product.id}">
         <img src=${product.image} class="card-img-top p-1" alt="${product.title}">
         <div class="card-body">
             <h5 class="card-title">${displayTitle}</h5>
@@ -41,7 +44,6 @@ export function createCard() {
           addToCart(product);
         };
       }, 0);
-
       cardContainer.innerHTML += card;
     });
   });
