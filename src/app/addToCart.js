@@ -4,17 +4,10 @@ import { toast } from "./toast.js";
 let qContainer = document.querySelector("#qProducts");
 
 export function addToCart(product) {
-  // Guardar artículos actuales del localStorage en array
-  let objLocalStorage = JSON.parse(localStorage.getItem("CardProducts"));
-  // Buscar artículo en array
+  let objLocalStorage = JSON.parse(localStorage.getItem("CardProducts")) || [];
   let productExists = objLocalStorage.find(
     (productStorage) => productStorage.id == product.id
-
   );
-
-  // si la variable es undefined, entonces da false el if
-  // Si existe el producto: actualizar cantidad + buscar índice + actualizar array
-  // Si no existe, se crea la prop. de quantity y se agrega el producto al array
 
   if (productExists) {
     productExists.quantity += 1;
@@ -29,23 +22,60 @@ export function addToCart(product) {
     objLocalStorage.push(product);
   }
 
-
-  // Actualizar localStorage
   localStorage.setItem("CardProducts", JSON.stringify(objLocalStorage));
-
-  // pasar info al Aside
   createAside(objLocalStorage);
-
-  // Alerta
   toast("El producto se agregó correctamente", "light");
 
-  let updLocalStorage = JSON.parse(localStorage.getItem("CardProducts"));
-  console.log(updLocalStorage)
-  let totalquantity = 0;  // Declarar la variable antes del bucle
-  updLocalStorage.forEach(element => {
-      totalquantity += element.quantity;  // Sumar el valor de cada cantidad
-  });
-  let qProducts = `<div class="qProducts">${totalquantity}</div>`;
-  qContainer.innerHTML = qProducts;
+  updateProductCount();
 }
+
+export function removeFromCart(product) {
+  let objLocalStorage = JSON.parse(localStorage.getItem("CardProducts")) || [];
+
+  let productExists = objLocalStorage.find(
+    (productStorage) => productStorage.id == product.id
+  );
+
+  if (productExists && productExists.quantity > 1) {
+    productExists.quantity -= 1;
+    productExists.totalPrice = productExists.quantity * productExists.price;
+    let index = objLocalStorage.findIndex(
+      (productStorage) => productStorage.id == product.id
+    );
+    objLocalStorage[index] = productExists;
+  } else if (productExists && productExists.quantity === 1) {
+    objLocalStorage = objLocalStorage.filter(
+      (productStorage) => productStorage.id !== product.id
+    );
+  }
+
+  localStorage.setItem("CardProducts", JSON.stringify(objLocalStorage));
+  createAside(objLocalStorage);
+  toast("El producto se eliminó correctamente", "light");
+
+  updateProductCount();
+}
+
+// funcion para actualizar el num. rojo
+export function updateProductCount() {
+  let qContainer = document.querySelector("#qProducts");
+  let updatedLocalStorage = JSON.parse(localStorage.getItem("CardProducts")) || [];
+
+  // calcular cant. total
+  let totalQuantity = updatedLocalStorage.reduce((sum, product) => sum + product.quantity, 0);
+
+  // ocultar cuando no hay productos
+  if (totalQuantity === 0) {
+    qContainer.innerHTML = "";
+  } else {
+    let qProducts = `<div class="qProducts">${totalQuantity}</div>`;
+    qContainer.innerHTML = qProducts;
+  }
+}
+
+// inicio contador
+document.addEventListener("DOMContentLoaded", function() {
+  updateProductCount();
+});
+
 

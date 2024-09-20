@@ -1,29 +1,30 @@
 import { createAside } from "./aside.js";
 import { toast } from "./toast.js";
 import { createCartCards } from "./createCartCards.js";
+import { addToCart, updateProductCount } from "./addToCart.js";
 
-export function addRemoveButton(objLocalStorage, product, type) {
-  // guardo index del producto
-  let index = objLocalStorage.findIndex(
-    (productStorage) => productStorage.id == product.id
-  );
+export function addRemoveButton(objLocalStorage, product, action) {
+  let updatedLocalStorage = JSON.parse(localStorage.getItem("CardProducts"));
 
-  // sumar o restar
-  if (type == "add") product.quantity += 1;
-  else if (type == "remove") product.quantity -= 1;
-  else if (type == "delete") product.quantity = 0;
-
-  // Actualizo info (si queda en cero, elimino el producto)
-  if (product.quantity == 0) {
-    objLocalStorage.splice(index, 1);
-    toast("El producto se eliminó correctamente", "danger");
-  } else {
-    product.totalPrice = product.quantity * product.price;
-    objLocalStorage[index] = product;
-    toast("La cantidad se actualizó correctamente", "success");
+  let productInCart = updatedLocalStorage.find((p) => p.id === product.id);
+  
+  if (action === "add") {
+    productInCart.quantity += 1;
+    productInCart.totalPrice = productInCart.quantity * productInCart.price;
+  } else if (action === "remove") {
+    if (productInCart.quantity > 1) {
+      productInCart.quantity -= 1;
+      productInCart.totalPrice = productInCart.quantity * productInCart.price;
+    } else {
+      updatedLocalStorage = updatedLocalStorage.filter((p) => p.id !== product.id);
+    }
+  } else if (action === "delete") {
+    updatedLocalStorage = updatedLocalStorage.filter((p) => p.id !== product.id);
   }
 
-  localStorage.setItem("CardProducts", JSON.stringify(objLocalStorage));
-  createAside(objLocalStorage);
-  createCartCards(objLocalStorage);
+  localStorage.setItem("CardProducts", JSON.stringify(updatedLocalStorage));
+  createAside(updatedLocalStorage);
+
+  // llamo a la funcion que actualiza el num. rojo
+  updateProductCount();
 }
