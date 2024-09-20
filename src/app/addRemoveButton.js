@@ -11,15 +11,18 @@ export function addRemoveButton(objLocalStorage, product, action) {
   if (action === "add") {
     productInCart.quantity += 1;
     productInCart.totalPrice = productInCart.quantity * productInCart.price;
+    toast("El producto se agregó correctamente", "light");
   } else if (action === "remove") {
     if (productInCart.quantity > 1) {
       productInCart.quantity -= 1;
       productInCart.totalPrice = productInCart.quantity * productInCart.price;
+      toast("La cantidad se actualizo correctamente", "light");
     } else {
       updatedLocalStorage = updatedLocalStorage.filter((p) => p.id !== product.id);
     }
   } else if (action === "delete") {
     updatedLocalStorage = updatedLocalStorage.filter((p) => p.id !== product.id);
+    toast("El producto se elimino correctamente", "danger");
   }
 
   localStorage.setItem("CardProducts", JSON.stringify(updatedLocalStorage));
