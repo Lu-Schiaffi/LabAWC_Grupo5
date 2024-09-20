@@ -19,7 +19,7 @@ export function createCards() {
       product.totalPrice = 0;
 
       // Se agrega el id al div para luego modificar la class con el searches: collpase | collapse.show
-      let card = `<div class="card collapse.show" id="card-${product.id}">
+      let card = `<div class="card spaces collapse.show" id="card-${product.id}">
         <img src=${product.image} class="card-img-top p-1" alt="${product.title}">
         <div class="card-body">
             <h5 class="card-title">${displayTitle}</h5>

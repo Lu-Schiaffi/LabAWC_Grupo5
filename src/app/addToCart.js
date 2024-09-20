@@ -1,12 +1,15 @@
 import { createAside } from "./aside.js";
 import { toast } from "./toast.js";
 
+let qContainer = document.querySelector("#qProducts");
+
 export function addToCart(product) {
   // Guardar artículos actuales del localStorage en array
   let objLocalStorage = JSON.parse(localStorage.getItem("CardProducts"));
   // Buscar artículo en array
   let productExists = objLocalStorage.find(
     (productStorage) => productStorage.id == product.id
+
   );
 
   // si la variable es undefined, entonces da false el if
@@ -26,6 +29,7 @@ export function addToCart(product) {
     objLocalStorage.push(product);
   }
 
+
   // Actualizar localStorage
   localStorage.setItem("CardProducts", JSON.stringify(objLocalStorage));
 
@@ -34,4 +38,14 @@ export function addToCart(product) {
 
   // Alerta
   toast("El producto se agregó correctamente", "light");
+
+  let updLocalStorage = JSON.parse(localStorage.getItem("CardProducts"));
+  console.log(updLocalStorage)
+  let totalquantity = 0;  // Declarar la variable antes del bucle
+  updLocalStorage.forEach(element => {
+      totalquantity += element.quantity;  // Sumar el valor de cada cantidad
+  });
+  let qProducts = `<div class="qProducts">${totalquantity}</div>`;
+  qContainer.innerHTML = qProducts;
 }
+

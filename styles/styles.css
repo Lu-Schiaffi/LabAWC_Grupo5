@@ -3,12 +3,15 @@
 * {
   font-family: "Anek Devanagar", sans-serif;
 }
-main {
-  margin-bottom: 48px;
+body  {
+  width: 100vw;
+  height: 100vh;
 }
 
 .indexMain {
   line-height: 0.5;
+  width: 100vw;
+  height: 86vh;
 }
 
 img {
@@ -19,9 +22,7 @@ img {
 }
 
 footer {
-  position: fixed;
   margin: 0;
-  padding: 3px;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -30,4 +31,22 @@ footer {
 .modal-title,
 .card-title {
   font-weight: 700;
+}
+
+.spaces {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.qProducts{
+background-color: red;
+color: white;
+width: 18px;
+height: 18px;
+position: relative;
+border-radius: 50%;
+bottom: 18px;
+right: 10px;
+text-align: center;
+font-size: 12px;
 }
