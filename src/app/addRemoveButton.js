@@ -26,7 +26,9 @@ export function addRemoveButton(objLocalStorage, product, action) {
   }
 
   localStorage.setItem("CardProducts", JSON.stringify(updatedLocalStorage));
+  createCartCards(updatedLocalStorage);
   createAside(updatedLocalStorage);
+
 
   // llamo a la funcion que actualiza el num. rojo
   updateProductCount();
