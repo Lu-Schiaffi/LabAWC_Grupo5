@@ -25,8 +25,9 @@ export function addRemoveButton(objLocalStorage, product, action) {
     toast("El producto se elimino correctamente", "danger");
   }
 
+  // Update local storage + update pages. 
   localStorage.setItem("CardProducts", JSON.stringify(updatedLocalStorage));
-  createCartCards(updatedLocalStorage);
+  createCartCards(updatedLocalStorage); //call his one first to correctly renderize the Cart view.
   createAside(updatedLocalStorage);
 
 
