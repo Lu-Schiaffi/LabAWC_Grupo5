@@ -3,8 +3,8 @@
 * {
   font-family: "Anek Devanagar", sans-serif;
 }
+
 body  {
-  width: 100vw;
   height:100vh;
 }
 
@@ -71,5 +71,6 @@ footer {
 }
 .container {
   width: 100vw;
+  margin: 0;
 }
 
