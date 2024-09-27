@@ -20,7 +20,7 @@
     />
   </head>
 
-  <body>
+  <body class="bg-dark">
     <!-- NavBar -->
     <header class="p-3 bg-dark text-white">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -78,13 +78,19 @@
           aria-describedby="inputGroup-sizing-default"
         />
       </div>
+      <!-- spinner -->
+      <div class="position-fixed bottom-50 end-50 d-flex justify-content-center" id="loading">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
       <!-- Cards -->
-      <section class="container">
-        <div class="row row-cols-2 row-cols-md-5 g-4" id="card-template" style="justify-content: center;">
+      <section class="bg-dark container">
+        <div class="row row-cols-2 row-cols-xs row-cols-sm-3 row-cols-md-5 g-4" id="card-template" style="justify-content: center;">
         </div>
       </section>
       <!-- Modal -->
-      <div
+      <div  
         class="modal fade"
         id="detailsModal"
         tabindex="-1"
