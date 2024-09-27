@@ -1,5 +1,6 @@
 import { addRemoveButton } from "./addRemoveButton.js";
 
+console.log(window.innerWidth)
 export function createCartCards(objLocalStorage) {
   let totalCompra = 0;
   // limpiar el container cada vez que se llama la función
@@ -9,9 +10,9 @@ export function createCartCards(objLocalStorage) {
   objLocalStorage.map((product) => {
     let cartCard = `
     <div class="card m-3" style="max-height: 160px">
-        <div class="row g-0">
-            <div class="col-md-2">
-                <img src="${product.image}" class="rounded-start p-1 position-relative top-50 start-50 translate-middle"style="max-height: 40px min-height: 40px" alt="${product.title}">
+        <div class="row g-0" style="max-height: 160px">
+            <div class="col-md-2" style="max-height: inherit;">
+                <img src="${product.image}" class="img-cart rounded-start p-1 position-relative top-50 start-50 translate-middle" alt="${product.title}" id="img-${product.id}">
             </div>
             <div class="col-md-10">
                 <div class="card-body">
@@ -66,7 +67,7 @@ export function createCartCards(objLocalStorage) {
     }, 0);
 
       if (window.location.pathname != "/pages/products.html") {
-      cartBody.innerHTML += cartCard;
+        cartBody.innerHTML += cartCard;
     }
   });
 
