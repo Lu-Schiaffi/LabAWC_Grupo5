@@ -3,10 +3,13 @@ import { createModal } from "./modal.js";
 import { addToCart } from "./addToCart.js";
 import { searcher } from "./searcher.js";
 
+let spiner = document.querySelector("#loading");
 let cardContainer = document.querySelector("#card-template");
+
 
 export function createCards() {
   getProducts().then((data) => {
+    spiner.remove();
     data.map((product) => {
       // createIndividualCard(product);
       // Title trimmed to 100 characters

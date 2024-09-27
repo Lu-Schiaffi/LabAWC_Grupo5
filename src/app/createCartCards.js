@@ -11,7 +11,7 @@ export function createCartCards(objLocalStorage) {
     <div class="card m-3" style="max-height: 160px">
         <div class="row g-0">
             <div class="col-md-2">
-                <img src="${product.image}" class="img-fluid rounded-start p-1 position-relative top-50 start-50 translate-middle"style="max-height: 140px" alt="${product.title}">
+                <img src="${product.image}" class="rounded-start p-1 position-relative top-50 start-50 translate-middle"style="max-height: 40px min-height: 40px" alt="${product.title}">
             </div>
             <div class="col-md-10">
                 <div class="card-body">
@@ -37,7 +37,7 @@ export function createCartCards(objLocalStorage) {
     </div>
     `;
 
-    totalCompra += product.totalPrice;
+    totalCompra += parseFloat(product.totalPrice);
 
     // boton menos
     setTimeout(() => {
@@ -65,9 +65,12 @@ export function createCartCards(objLocalStorage) {
       };
     }, 0);
 
-    cartBody.innerHTML += cartCard;
+      if (window.location.pathname != "/pages/products.html") {
+      cartBody.innerHTML += cartCard;
+    }
   });
 
+    
   let cartBodyFooter = "";
   if (objLocalStorage.length == 0) {
     cartBodyFooter = `
@@ -88,7 +91,7 @@ export function createCartCards(objLocalStorage) {
   } else {
     cartBodyFooter = `
     
-    <div class="card-title text-center border border-success-subtle rounded mb-3">Total compra: $${totalCompra}</div>
+    <div class="card-title text-center border border-success-subtle rounded mb-3">Total compra: $${totalCompra.toFixed(2)}</div>
     
     <div class="row">
     <div class="col-12">
@@ -103,5 +106,8 @@ export function createCartCards(objLocalStorage) {
     
     `;
   }
-  cartBody.innerHTML += cartBodyFooter;
+  if (window.location.pathname != "/pages/products.html") {
+    cartBody.innerHTML += cartBodyFooter;
+  }
+  
 }
