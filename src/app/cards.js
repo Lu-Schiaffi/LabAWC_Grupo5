@@ -4,12 +4,14 @@ import { addToCart } from "./addToCart.js";
 import { searcher } from "./searcher.js";
 
 let spiner = document.querySelector("#loading");
+let footer = document.querySelector("#footer");
 let cardContainer = document.querySelector("#card-template");
 
 
 export function createCards() {
   getProducts().then((data) => {
     spiner.remove();
+    footer.classList.remove("fixed-bottom")
     data.map((product) => {
       // createIndividualCard(product);
       // Title trimmed to 100 characters

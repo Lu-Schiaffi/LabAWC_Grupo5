@@ -4,7 +4,6 @@ import { createAside } from "./app/aside.js";
 import { toast } from "./app/toast.js";
 import { createCartCards } from "./app/createCartCards.js";
 import { searcher } from "./app/searcher.js";
-
 createCards();
 searcher();
 
