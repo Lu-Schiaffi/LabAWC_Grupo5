@@ -39,14 +39,18 @@ footer {
 }
 
 .qProducts{
-background-color: red;
-color: white;
-width: 18px;
-height: 18px;
-position: relative;
-border-radius: 50%;
-bottom: 18px;
-right: 10px;
-text-align: center;
-font-size: 12px;
+  background-color: red;
+  color: white;
+  width: 18px;
+  height: 18px;
+  position: relative;
+  border-radius: 50%;
+  bottom: 18px;
+  right: -55px;
+  text-align: center;
+  font-size: 12px;
+}
+
+#qProducts{
+ display: inline-grid; 
 }

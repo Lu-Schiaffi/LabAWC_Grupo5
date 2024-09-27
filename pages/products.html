@@ -49,17 +49,17 @@
               </li>
             </ul>
           </div>
-          <button
+          <div>
+            <div id="qProducts"></div>
+            <button
             class="btn btn-primary"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight"
-          >
-          
-            <i class="bi bi-cart4"></i>
-          </button><div id="qProducts"></div>
+            aria-controls="offcanvasRight"><i class="bi bi-cart4"></i>
+          </button>
         </div>
+      </div>
       </nav>
     </header>
 
@@ -80,9 +80,9 @@
       </div>
       <!-- Cards -->
       <section class="container">
-        <div class="row row-cols-2 row-cols-md-5 g-4" id="card-template" style="justify-content: center;"></div>
+        <div class="row row-cols-2 row-cols-md-5 g-4" id="card-template" style="justify-content: center;">
+        </div>
       </section>
-
       <!-- Modal -->
       <div
         class="modal fade"
@@ -93,6 +93,12 @@
       ></div>
 
       <!-- aside -->
+        <!-- card container -->
+        <section class="container">
+          <div class="row">
+            <div class="col-12" id="cart-card-template"></div>
+          </div>
+        </section>
       <div
         class="offcanvas offcanvas-end text-bg-dark"
         tabindex="-1"

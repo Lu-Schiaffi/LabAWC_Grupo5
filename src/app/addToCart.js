@@ -2,7 +2,6 @@ import { createAside } from "./aside.js";
 import { toast } from "./toast.js";
 
 let qContainer = document.querySelector("#qProducts");
-
 export function addToCart(product) {
   let objLocalStorage = JSON.parse(localStorage.getItem("CardProducts")) || [];
   let productExists = objLocalStorage.find(
@@ -11,14 +10,14 @@ export function addToCart(product) {
 
   if (productExists) {
     productExists.quantity += 1;
-    productExists.totalPrice = productExists.quantity * productExists.price;
+    productExists.totalPrice = productExists.quantity * productExists.price
     let index = objLocalStorage.findIndex(
       (productStorage) => productStorage.id == product.id
     );
     objLocalStorage[index] = productExists;
   } else {
     product.quantity = 1;
-    product.totalPrice = product.quantity * product.price;
+    product.totalPrice = product.quantity * product.price
     objLocalStorage.push(product);
   }
 
@@ -38,7 +37,7 @@ export function removeFromCart(product) {
 
   if (productExists && productExists.quantity > 1) {
     productExists.quantity -= 1;
-    productExists.totalPrice = productExists.quantity * productExists.price;
+    productExists.totalPrice = productExists.quantity * productExists.price
     let index = objLocalStorage.findIndex(
       (productStorage) => productStorage.id == product.id
     );

@@ -49,15 +49,16 @@
               </li>
             </ul>
           </div>
-          <button
+          <div>
+            <div id="qProducts"></div>
+            <button
             class="btn btn-primary"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight"
-          >
-            <i class="bi bi-cart4"></i>
+            aria-controls="offcanvasRight"><i class="bi bi-cart4"></i>
           </button>
+        </div>
         </div>
       </nav>
     </header>
@@ -73,6 +74,7 @@
       </section>
 
       <!-- aside -->
+
       <div
         class="offcanvas offcanvas-end text-bg-dark"
         tabindex="-1"
@@ -93,7 +95,7 @@
 
       <!-- toast -->
       <div aria-live="polite" aria-atomic="true" class="position-relative">
-        <div class="toast-container top-0 end-0 p-3 position-fixed z-5"></div>
+        <div class="toast-container bottom-0 end-0 p-3 position-fixed z-5"></div>
       </div>
     </main>
 

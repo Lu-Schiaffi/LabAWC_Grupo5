@@ -9,6 +9,8 @@ export function createAside(objLocalStorage) {
   asideBody.innerHTML = "<br>";
 
   objLocalStorage.map((product) => {
+    let price = parseFloat(product.totalPrice);
+    let shortPrice = price.toFixed(2);
     let aside = `
     <div class="card mb-3 text-bg-dark border border-light-subtle" style="max-width: 540px;">
       <div class="row g-0">
@@ -17,7 +19,7 @@ export function createAside(objLocalStorage) {
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <p class="card-title text-center">$${product.totalPrice}</p> <!-- Precio actualizado del producto -->
+            <p class="card-title text-center">$${shortPrice}</p> <!-- Precio actualizado del producto -->
             <div class= "text-center" >
               <button type="button" class = "btn btn-outline-dark text-bg-secondary" id="buttonLess-${product.id}">-</button>
               <span class="card-text">${product.quantity}</span>
@@ -35,7 +37,8 @@ export function createAside(objLocalStorage) {
     </div>
         `;
 
-    totalCompra += product.totalPrice;
+    totalCompra += parseFloat(product.totalPrice);
+
 
     setTimeout(() => {
       let buttonLess = document.querySelector(`#buttonLess-${product.id}`);
@@ -62,7 +65,7 @@ export function createAside(objLocalStorage) {
   });
 
   let asideFooter = `
-      <div class="card-title text-center border border-success-subtle rounded mb-3">Total compra: $${totalCompra}</div>`;
+      <div class="card-title text-center border border-success-subtle rounded mb-3">Total compra: $${totalCompra.toFixed(2)}</div>`;
 
   let finishBtn;
   if (totalCompra !== 0) {
