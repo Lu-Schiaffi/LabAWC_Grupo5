@@ -23,7 +23,7 @@ export function addToCart(product) {
 
   localStorage.setItem("CardProducts", JSON.stringify(objLocalStorage));
   createAside(objLocalStorage);
-  toast("El producto se agregó correctamente", "light");
+  toast("El producto se agregó correctamente", "primary");
 
   updateProductCount();
 }
