@@ -65,10 +65,9 @@ export function createCartCards(objLocalStorage) {
         addRemoveButton(objLocalStorage, product, "delete");
       };
     }, 0);
-
-      if (window.location.pathname != "/pages/products.html") {
+    
         cartBody.innerHTML += cartCard;
-    }
+
   });
 
     
@@ -107,8 +106,8 @@ export function createCartCards(objLocalStorage) {
     
     `;
   }
-  if (window.location.pathname != "/pages/products.html") {
+ 
     cartBody.innerHTML += cartBodyFooter;
-  }
+ 
   
 }
