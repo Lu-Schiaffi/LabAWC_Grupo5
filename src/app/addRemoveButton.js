@@ -3,7 +3,7 @@ import { toast } from "./toast.js";
 import { createCartCards } from "./createCartCards.js";
 import { addToCart, updateProductCount } from "./addToCart.js";
 
-export function addRemoveButton(objLocalStorage, product, action) {
+export function addRemoveButton( product, action) {
   let updatedLocalStorage = JSON.parse(localStorage.getItem("CardProducts"));
 
   let productInCart = updatedLocalStorage.find((p) => p.id === product.id);

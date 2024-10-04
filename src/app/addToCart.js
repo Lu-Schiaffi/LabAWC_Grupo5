@@ -28,32 +28,6 @@ export function addToCart(product) {
   updateProductCount();
 }
 
-export function removeFromCart(product) {
-  let objLocalStorage = JSON.parse(localStorage.getItem("CardProducts")) || [];
-
-  let productExists = objLocalStorage.find(
-    (productStorage) => productStorage.id == product.id
-  );
-
-  if (productExists && productExists.quantity > 1) {
-    productExists.quantity -= 1;
-    productExists.totalPrice = productExists.quantity * productExists.price
-    let index = objLocalStorage.findIndex(
-      (productStorage) => productStorage.id == product.id
-    );
-    objLocalStorage[index] = productExists;
-  } else if (productExists && productExists.quantity === 1) {
-    objLocalStorage = objLocalStorage.filter(
-      (productStorage) => productStorage.id !== product.id
-    );
-  }
-
-  localStorage.setItem("CardProducts", JSON.stringify(objLocalStorage));
-  createAside(objLocalStorage);
-  toast("El producto se eliminó correctamente", "light");
-
-  updateProductCount();
-}
 
 // funcion para actualizar el num. rojo
 export function updateProductCount() {

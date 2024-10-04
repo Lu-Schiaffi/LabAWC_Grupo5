@@ -55,7 +55,7 @@ export function createCartCards(objLocalStorage) {
     setTimeout(() => {
       let buttonLess = document.querySelector(`#buttonLess-${product.id}-cart`);
       buttonLess.onclick = () => {
-        addRemoveButton(objLocalStorage, product, "remove");
+        addRemoveButton(product, "remove");
       };
     }, 0);
 
@@ -63,7 +63,7 @@ export function createCartCards(objLocalStorage) {
     setTimeout(() => {
       let buttonAdd = document.querySelector(`#buttonAdd-${product.id}-cart`);
       buttonAdd.onclick = () => {
-        addRemoveButton(objLocalStorage, product, "add");
+        addRemoveButton(product, "add");
       };
     }, 0);
 
@@ -73,7 +73,7 @@ export function createCartCards(objLocalStorage) {
         `#buttonDelete-${product.id}-cart`
       );
       buttonDelete.onclick = () => {
-        addRemoveButton(objLocalStorage, product, "delete");
+        addRemoveButton(product, "delete");
       };
     }, 0);
 

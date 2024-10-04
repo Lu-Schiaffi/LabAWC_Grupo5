@@ -43,21 +43,21 @@ export function createAside(objLocalStorage) {
     setTimeout(() => {
       let buttonLess = document.querySelector(`#buttonLess-${product.id}`);
       buttonLess.onclick = () => {
-        addRemoveButton(objLocalStorage, product, "remove");
+        addRemoveButton(product, "remove");
       };
     }, 0);
 
     setTimeout(() => {
       let buttonAdd = document.querySelector(`#buttonAdd-${product.id}`);
       buttonAdd.onclick = () => {
-        addRemoveButton(objLocalStorage, product, "add");
+        addRemoveButton(product, "add");
       };
     }, 0);
 
     setTimeout(() => {
       let buttonDelete = document.querySelector(`#buttonDelete-${product.id}`);
       buttonDelete.onclick = () => {
-        addRemoveButton(objLocalStorage, product, "delete");
+        addRemoveButton(product, "delete");
       };
     }, 0);
 
